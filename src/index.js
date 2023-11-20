@@ -2,22 +2,33 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Cadastro from "./pages/Cadastro"
+import Cadastro from "./pages/Cadastro";
+
+// Custom Error Component
+const ErrorComponent = () => {
+  return <div>Error: Página não encontrada!</div>;
+};
 
 export default function App() {
   return (
     <BrowserRouter>
-    <Routes>
-        <Route path="/" element={''}>
-        <Route index element={<Home />} />
-        <Route path="login" element={<Login/>} />
-        <Route path="cadastro" element={<Cadastro/>} />
-        <Route path="home" element={<Home/>} />
-
-      </Route>
-    </Routes>
-  </BrowserRouter>
-);
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Routes>
+              <Route index element={<Home />} />
+              <Route path="login" element={<Login />} />
+              <Route path="cadastro" element={<Cadastro />} />
+              <Route path="home" element={<Home />} />
+              {/* Error route */}
+              <Route path="*" element={<ErrorComponent />} />
+            </Routes>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
