@@ -15,14 +15,13 @@ export default function App() {
       <Routes>
         <Route
           path="/"
+          erroElement = {<ErrorComponent/>}
           element={
             <Routes>
               <Route index element={<Home />} />
               <Route path="login" element={<Login />} />
               <Route path="cadastro" element={<Cadastro />} />
-              <Route path="home" element={<Home />} />
-              {/* Error route */}
-              <Route path="*" element={<ErrorComponent />} />
+              <Route path="home" element={<Home />} /> />
             </Routes>
           }
         />
