@@ -15,7 +15,7 @@ export default function App() {
       <Routes>
         <Route
           path="/"
-          errorElement = {<ErrorComponent/>}
+          errorElement = <ErrorComponent/>
           element={
             <Routes>
               <Route index element={<Home />} />
